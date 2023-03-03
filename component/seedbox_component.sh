@@ -103,5 +103,5 @@ function bbrx_install() {
 function boot_script() {
   echo -e "\033[36m ================= 杰佬 boot-script ================= \033[0m"
   . <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/.boot-script.sh)
-  boot_script
+  .boot_script
 }
