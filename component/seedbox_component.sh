@@ -102,6 +102,17 @@ function bbrx_install() {
 
 function boot_script() {
   echo -e "\033[36m ================= 杰佬 boot-script ================= \033[0m"
-  . <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/.boot-script.sh)
-  .boot_script
+  wget https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Miscellaneous/.boot-script.sh && chmod +x .boot-script.sh
+  cat << EOF > /etc/systemd/system/boot-script.service
+  [Unit]
+  Description=boot-script
+  After=network.target
+  [Service]
+  Type=simple
+  ExecStart=/root/.boot-script.sh
+  RemainAfterExit=true
+  [Install]
+  WantedBy=multi-user.target
+  EOF
+  systemctl enable boot-script.service
 }
