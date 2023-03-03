@@ -113,6 +113,6 @@ function boot_script() {
   RemainAfterExit=true
   [Install]
   WantedBy=multi-user.target
-  EOF
-  systemctl enable boot-script.service
+EOF
+    systemctl enable boot-script.service
 }
